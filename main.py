@@ -1,5 +1,6 @@
 # file system search engine
 # Kravtsov - %
+import os
 
 def main():
 
@@ -14,12 +15,14 @@ def runCommand(command):
     pass
 
 def moveUp():
-
-    pass
+    os.chdir('../')
 
 def moveDown(currentDir):
-
-    pass
+    currentDir = str(currentDir)
+    try:
+        os.chdir(currentDir)
+    except FileNotFoundError:
+        print('некорректный ввод') # надо будет придумать, что тут выводить
 
 def countFiles(path):
 
