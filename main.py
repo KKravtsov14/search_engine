@@ -22,7 +22,7 @@ def moveDown(currentDir):
     try:
         os.chdir(currentDir)
     except FileNotFoundError:
-        print('некорректный ввод') # надо будет придумать, что тут выводить
+        print('некорректный ввод') #надо будет придумать, что тут выводить
 
 def countFiles(path):
 
