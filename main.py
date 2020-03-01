@@ -6,8 +6,11 @@ def main():
 
     pass
 
-def acceptCommand():
-
+def acceptCommand(n_command):
+    lst = ['1', '2', '3', '4', '5', '6', '7']
+    while n_command not in lst:
+        n_command = input('Некорректный ввод. Пожалуйста, повторите попытку')
+    return int(n_command)
     pass
 
 def runCommand(command):
