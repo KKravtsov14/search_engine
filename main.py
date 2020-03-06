@@ -11,7 +11,7 @@ def acceptCommand(n_command):
     while n_command not in lst:
         n_command = input('Некорректный ввод. Пожалуйста, повторите попытку')
     return int(n_command)
-    pass
+
 
 def runCommand(command):
 
@@ -20,6 +20,7 @@ def runCommand(command):
 def moveUp():
     os.chdir('../')
 
+
 def moveDown(currentDir):
     currentDir = str(currentDir)
     try:
@@ -27,9 +28,17 @@ def moveDown(currentDir):
     except FileNotFoundError:
         print('некорректный ввод') #надо будет придумать, что тут выводить
 
-def countFiles(path):
 
-    pass
+def countFiles(path):
+    k = 0
+    if os.path.isdir(path):
+        for i in os.listdir(path):
+            if os.path.isdir(path + '/' + i):
+                k += countFiles(path + '/' + i)
+            else:
+                k += 1
+    return k
+
 
 def countBytes(path):
 
@@ -38,3 +47,5 @@ def countBytes(path):
 def findFiles(target, path):
 
     pass
+
+
