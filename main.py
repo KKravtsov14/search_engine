@@ -1,5 +1,5 @@
 # file system search engine
-# Kravtsov - %
+# Kravtsov - 80%
 import os
 
 def main():
@@ -60,5 +60,3 @@ def findFiles(target, path):
             elif target.lower() in i.lower():
                 k.append(path + '/' + i)
     return k
-
-print(findFiles('ooo','c:/test'))
