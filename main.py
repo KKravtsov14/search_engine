@@ -52,5 +52,13 @@ def countBytes(path):
 
 
 def findFiles(target, path):
+    k = []
+    if os.path.isdir(path):
+        for i in os.listdir(path):
+            if os.path.isdir(path + '/' + i):
+                k.extend(findFiles(target, path + '/' + i))
+            elif target.lower() in i.lower():
+                k.append(path + '/' + i)
+    return k
 
-    pass
+print(findFiles('ooo','c:/test'))
