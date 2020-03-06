@@ -41,11 +41,16 @@ def countFiles(path):
 
 
 def countBytes(path):
+    k = 0
+    if os.path.isdir(path):
+        for i in os.listdir(path):
+            if os.path.isdir(path + '/' + i):
+                k += countBytes(path + '/' + i)
+            else:
+                k += os.path.getsize(path + '/' + i)
+    return k
 
-    pass
 
 def findFiles(target, path):
 
     pass
-
-
