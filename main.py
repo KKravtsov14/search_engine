@@ -52,10 +52,9 @@ def moveUp():
 
 
 def moveDown(currentDir):
-    currentDir = str(currentDir)
     while True:
         try:
-            os.chdir(currentDir)
+            os.chdir(os.getcwd() + '/' + currentDir)
             break
         except FileNotFoundError:
             currentDir = input('Некорректный ввод. Введите еще раз:')
