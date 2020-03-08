@@ -31,18 +31,21 @@ def runCommand(command):
     if command == 2:
         return moveUp()
     if command == 3:
-        currentDir = input()
+        currentDir = input('Введите путь к данному каталогу:')
         return moveDown(currentDir)
     if command == 4:
-        path = str(input())
-        print(countFiles(path))
+        path = str(input('Введите путь к данному каталогу:'))
+        print('Количество файлов и каталогов:', countFiles(path))
     if command == 5:
         path = str(input())
-        print(countBytes(path))
+        print('Размер текущего каталога:',countBytes(path), '(в байтах)')
     if command == 6:
-        path = str(input())
-        target = str(input()) #
-        print(findFiles(target, path))
+        path = str(input('Введите путь к данному каталогу:'))
+        target = str(input('Введите название файла:'))
+        if findFiles(target, path) == []:
+            print('Файл не найден')
+        else:
+            print(findFiles(target, path))
 
 def moveUp():
     os.chdir('../')
@@ -50,10 +53,13 @@ def moveUp():
 
 def moveDown(currentDir):
     currentDir = str(currentDir)
-    try:
-        os.chdir(currentDir)
-    except FileNotFoundError:
-        print('некорректный ввод') #надо будет придумать, что тут выводить
+    while True:
+        try:
+            os.chdir(currentDir)
+            break
+        except FileNotFoundError:
+            currentDir = input('Некорректный ввод. Введите еще раз:')
+            return moveDown(currentDir)
 
 
 def countFiles(path):
