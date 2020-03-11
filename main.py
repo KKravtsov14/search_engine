@@ -1,5 +1,6 @@
 # file system search engine
 # Kravtsov - 80%
+# Mikhailov - 30%
 import os
 
 def main():
